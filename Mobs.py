@@ -23,22 +23,22 @@ class mob(pygame.sprite.Sprite):
         self.health = 5
         self.healthbar = pygame.Surface((TILESIZE/8 * self.healthpts, TILESIZE))
         self.healthbarrect = self.healthbar.get_rect()
-        self.walkLeft = [pygame.image.load('assets/GhostLeft1.png').convert_alpha(),pygame.image.load('assets/GhostLeft2.png').convert_alpha(),pygame.image.load('assets/GhostLeft3.png').convert_alpha(),pygame.image.load('assets/GhostLeft4.png').convert_alpha(),pygame.image.load('assets/GhostLeft5.png').convert_alpha()]
-        self.walkRight = [pygame.image.load('assets/GhostRight1.png').convert_alpha(),pygame.image.load('assets/GhostRight2.png').convert_alpha(),pygame.image.load('assets/GhostRight3.png').convert_alpha(),pygame.image.load('assets/GhostRight4.png').convert_alpha(),pygame.image.load('assets/GhostRight5.png').convert_alpha()]
+        #self.walkLeft = [pygame.image.load('assets/GhostLeft1.png').convert_alpha(),pygame.image.load('assets/GhostLeft2.png').convert_alpha(),pygame.image.load('assets/GhostLeft3.png').convert_alpha(),pygame.image.load('assets/GhostLeft4.png').convert_alpha(),pygame.image.load('assets/GhostLeft5.png').convert_alpha()]
+        #self.walkRight = [pygame.image.load('assets/GhostRight1.png').convert_alpha(),pygame.image.load('assets/GhostRight2.png').convert_alpha(),pygame.image.load('assets/GhostRight3.png').convert_alpha(),pygame.image.load('assets/GhostRight4.png').convert_alpha(),pygame.image.load('assets/GhostRight5.png').convert_alpha()]
 
         self.left = False
         self.right = False
         self.standing = False
         self.walkCount = 0
         self.spriteChangeDelay = 0
-        self.image = self.walkLeft[0]
+        #self.image = self.walkLeft[0]
 
     def update(self):
         self.collision_etc()
         self.healthbarrect.center = self.x, self.y - TILESIZE
         self.rect.x, self.rect.y = self.x * TILESIZE, self.y * TILESIZE
         self.plan_move(self.game.player.x, self.game.player.y)
-        self.draw()
+        #self.draw()
     
     def draw(self):
         if self.walkCount + 1 >= 4:

@@ -18,12 +18,12 @@ class Player(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         self.health = PLAYER_HEALTH
-        self.walkDown = [pygame.image.load('assets/WalkDown1.png').convert_alpha(), pygame.image.load('assets/WalkDown2.png').convert_alpha(), pygame.image.load('assets/WalkDown3.png').convert_alpha(), pygame.image.load('assets/WalkDown4.png').convert_alpha()]
-        self.walkUp = [pygame.image.load('assets/WalkUp1.png').convert_alpha(),pygame.image.load('assets/WalkUp2.png').convert_alpha(),pygame.image.load('assets/WalkUp3.png').convert_alpha(),pygame.image.load('assets/WalkUp4.png').convert_alpha()]
-        self.walkLeft = [pygame.image.load('assets/WalkLeft1.png').convert_alpha(),pygame.image.load('assets/WalkLeft2.png').convert_alpha(),pygame.image.load('assets/WalkLeft3.png').convert_alpha(),pygame.image.load('assets/WalkLeft4.png').convert_alpha(),]
-        self.walkRight =[pygame.image.load('assets/WalkRight1.png').convert_alpha(),pygame.image.load('assets/WalkRight2.png').convert_alpha(),pygame.image.load('assets/WalkRight3.png').convert_alpha(),pygame.image.load('assets/WalkRight4.png').convert_alpha(),]
+        #self.walkDown = [pygame.image.load('assets/WalkDown1.png').convert_alpha(), pygame.image.load('assets/WalkDown2.png').convert_alpha(), pygame.image.load('assets/WalkDown3.png').convert_alpha(), pygame.image.load('assets/WalkDown4.png').convert_alpha()]
+        #self.walkUp = [pygame.image.load('assets/WalkUp1.png').convert_alpha(),pygame.image.load('assets/WalkUp2.png').convert_alpha(),pygame.image.load('assets/WalkUp3.png').convert_alpha(),pygame.image.load('assets/WalkUp4.png').convert_alpha()]
+        #self.walkLeft = [pygame.image.load('assets/WalkLeft1.png').convert_alpha(),pygame.image.load('assets/WalkLeft2.png').convert_alpha(),pygame.image.load('assets/WalkLeft3.png').convert_alpha(),pygame.image.load('assets/WalkLeft4.png').convert_alpha(),]
+        #self.walkRight =[pygame.image.load('assets/WalkRight1.png').convert_alpha(),pygame.image.load('assets/WalkRight2.png').convert_alpha(),pygame.image.load('assets/WalkRight3.png').convert_alpha(),pygame.image.load('assets/WalkRight4.png').convert_alpha(),]
 
-        self.image = self.walkDown[0]
+        #self.image = self.walkDown[0]
         self.up = False
         self.down = False
         self.left = False
@@ -44,7 +44,7 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         self.collide_etc()
         self.get_keys()
-        self.draw()
+        #self.draw()
         self.rect.x, self.rect.y = self.x * TILESIZE, self.y * TILESIZE
         #self.walkDown.draw(self.game.screen,  index %s, self.walkDown.totalCells, )
     

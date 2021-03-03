@@ -8,17 +8,17 @@ class BattleSystem:
     def __init__(self, game):
         self.game = game
 
-        self.playerimg = self.game.player.walkUp[0]
-        for x in range(4): 
-            self.playerimg = pygame.transform.scale2x(self.playerimg)
-        #self.playerimg = pygame.Surface((TILESIZE * 20, TILESIZE * 20))
-        #self.playerimg.fill(YELLOW)
-
-        #self.mobimg = pygame.Surface((TILESIZE * 20, TILESIZE * 20))
-        #self.mobimg.fill(RED)
-        self.mobimg = pygame.image.load('assets/GhostLeft1.png')
-        for x in range(4): 
-            self.mobimg = pygame.transform.scale2x(self.mobimg)
+        #self.playerimg = self.game.player.walkUp[0]
+        #for x in range(4): 
+        #    self.playerimg = pygame.transform.scale2x(self.playerimg)
+        self.playerimg = pygame.Surface((TILESIZE * 20, TILESIZE * 20))
+        self.playerimg.fill(YELLOW)
+        
+        self.mobimg = pygame.Surface((TILESIZE * 20, TILESIZE * 20))
+        self.mobimg.fill(RED)
+        #self.mobimg = pygame.image.load('assets/GhostLeft1.png')
+        #for x in range(4): 
+        #    self.mobimg = pygame.transform.scale2x(self.mobimg)
         
         self.playerHealthBar = pygame.Surface((TILESIZE * PLAYER_HEALTH, TILESIZE))
         self.playerHealthBar.fill(RED)
