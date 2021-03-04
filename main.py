@@ -49,6 +49,7 @@ class Game:
         self.battles = pygame.sprite.Group()
         self.walls = pygame.sprite.Group()
         self.mobs = pygame.sprite.Group()
+        self.vfx = pygame.sprite.Group()
         self.Bullets = pygame.sprite.Group()
         self.gui = pygame.sprite.Group()
         self.chests = pygame.sprite.Group()
@@ -94,6 +95,7 @@ class Game:
                     for sprite in self.all_sprites:
                         if sprite.rect.colliderect(self.camera.rect):
                             sprite.update()
+                    self.vfx.update()
                     self.camera.update(self.player)
 
     def quit(self):
@@ -146,7 +148,7 @@ class Game:
             
                 if event.key == pygame.K_SPACE and self.player.weapon != "none":
                     self.bulletsound.play()
-                    if self.player.weapon == "bullet":                        
+                    if self.player.weapon == "bullet":      
                         if self.player.up is True:
                             Bullet(self,self.player.rect.centerx,self.player.rect.centery,0,-10,)
 

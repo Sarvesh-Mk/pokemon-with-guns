@@ -45,6 +45,7 @@ class Player(pygame.sprite.Sprite):
         self.collide_etc()
         self.get_keys()
         #self.draw()
+        #self.rect.center = self.x * TILESIZE, self.y * TILESIZE
         self.rect.x, self.rect.y = self.x * TILESIZE, self.y * TILESIZE
         #self.walkDown.draw(self.game.screen,  index %s, self.walkDown.totalCells, )
     
@@ -84,8 +85,8 @@ class Player(pygame.sprite.Sprite):
             self.x += dx
             self.y += dy
             self.moveDelay = 0
-            for x in range(100):
-                Particle(self.game, self.x-PARTICLEOFFSET, self.y, [WHITE, LIGHTGREY])
+            for x in range(0,2):
+                Particle(self.game, self.rect.centerx + random.randint(PARTICLEOFFSET * -1 * 2,PARTICLEOFFSET * 2), self.rect.centery + random.randint(PARTICLEOFFSET * -1 * 2,PARTICLEOFFSET * 2), [WHITE, LIGHTGREY], None, False, PARTICLETIME)
 
     def get_keys(self):
         keys = pygame.key.get_pressed()
@@ -169,7 +170,7 @@ class Player(pygame.sprite.Sprite):
     
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, game, x, y, velx, vely):
-        self.groups = game.all_sprites, game.Bullets
+        self.groups = game.all_sprites, game.vfx, game.Bullets
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = pygame.Surface((TILESIZE / 4, TILESIZE / 4))

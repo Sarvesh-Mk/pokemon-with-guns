@@ -35,14 +35,16 @@ class Chest(pygame.sprite.Sprite):
         self.opened = False
 
     def update(self):
-        self.rect.x = self.x * TILESIZE
-        self.rect.y = self.y * TILESIZE
+        self.rect.center = self.x * TILESIZE, self.y * TILESIZE
         self.check_if_opened()
 
     def check_if_opened(self):
-        if self.opened == True:
-            self.game.player.weapon = 'bullet'
-            self.kill
+        if self.opened == False:
+            if self.rect.colliderect(self.game.player.rect):
+                self.opened = True
+                self.game.player.weapon = "bullet"
+                print(self.game.player.weapon)
+                self.kill()
 
 class LevelEnd(pygame.sprite.Sprite):
 

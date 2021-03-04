@@ -4,14 +4,17 @@ import random
 
 class Particle(pygame.sprite.Sprite):
 
-    def __init__(self, game, x, y, color=[WHITE], img=None, animate=False):
-        self.groups = game.all_sprites
+    def __init__(self, game, x, y, color=[WHITE], img=None, animate=False, timeonscreen=None):
+        self.groups = game.all_sprites, game.vfx
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.x = x
         self.y = y
         self.ifanimate = animate
         self.color = color
-        self.timeOnscreen = random.randint(0, PARTICLETIME)
+        if not timeonscreen:
+            self.timeOnscreen = random.randint(0, PARTICLETIME)
+        else:
+            self.timeOnscreen = timeonscreen
         if img:
             self.image = pygame.image.load(img)
         else:
