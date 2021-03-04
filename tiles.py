@@ -21,7 +21,7 @@ class Wall(pygame.sprite.Sprite):
 
 class Chest(pygame.sprite.Sprite):
     def __init__(self, game, x, y, sprite='none'):
-        self.groups = game.all_sprites, game.chests, game.walls
+        self.groups = game.all_sprites, game.chests
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         if sprite == 'none':
