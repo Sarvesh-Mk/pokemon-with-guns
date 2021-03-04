@@ -24,7 +24,7 @@ class Game:
         self.enemies = []
         self.bullets = []
         self.playing = False
-        self.maps= ['mapexample.txt','maps/area-1-map.txt', 'maps/area-2-map.txt', 'maps/area-3-map.txt', 'maps/area-4-map.txt', 'maps/area-5-map.txt', 'maps/area-6-map.txt', ]
+        self.maps= ['mapexample.txt','Test','maps/area-1-map.txt', 'maps/area-2-map.txt', 'maps/area-3-map.txt', 'maps/area-4-map.txt', 'maps/area-5-map.txt', 'maps/area-6-map.txt', ]
         self.gui = pygame.sprite.Group()
         self.mouse = Mouse(pygame.mouse.get_pos(), self, pygame.image.load('assets/cursor.png'))
         self.saveMenu = saveMenu(self)
@@ -71,7 +71,7 @@ class Game:
                     self.chest = Chest(self, col, row, pygame.image.load('assets/Chest.png'))
                 if tile == ".":
                     pass
-        self.camera = Camera(self.map.width, self.map.height)
+        self.camera = Camera(self, self.map.width, self.map.height)
         self.battle = BattleSystem(self)
         self.mainthemestart.play()
         self.mainTheme.play(-1)
@@ -91,7 +91,9 @@ class Game:
         if not self.saveMenu.savemenu:
             if not self.saveMenu.menu:
                 if not self.player.Battling:
-                    self.all_sprites.update()
+                    for sprite in self.all_sprites:
+                        if sprite.rect.colliderect(self.camera.rect):
+                            sprite.update()
                     self.camera.update(self.player)
 
     def quit(self):
@@ -105,7 +107,8 @@ class Game:
         if self.saveMenu.menu == False:
             if self.battle.Battling == False:
                 for sprite in self.all_sprites:
-                    self.screen.blit(sprite.image, self.camera.apply(sprite))
+                    if sprite.rect.colliderect(self.camera.rect):
+                        self.screen.blit(sprite.image, self.camera.apply(sprite))
                 self.screen.blit(self.mouse.image, self.mouse.rect)
                 #for mob in self.mobs:
                 #    self.screen.blit(mob.healthbar, mob.healthbarrect)

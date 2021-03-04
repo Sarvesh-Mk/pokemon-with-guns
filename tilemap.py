@@ -15,8 +15,10 @@ class Map:
 
 class Camera:
 
-    def __init__(self, width, height):
+    def __init__(self, game, width, height):
+        self.game = game
         self.camera = pygame.Rect(0,0,width,height)
+        self.rect = pygame.Rect(0,0,WIDTH,HEIGHT)
         self.width = width
         self.height = height
     
@@ -27,3 +29,4 @@ class Camera:
         x = -target.rect.x + int(WIDTH / 2)
         y = -target.rect.y + int(HEIGHT / 2)
         self.camera = pygame.Rect(x, y, self.width, self.height)
+        self.rect.center = self.game.player.rect.center
