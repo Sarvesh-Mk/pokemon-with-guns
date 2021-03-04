@@ -10,7 +10,7 @@ class Bar(pygame.sprite.Sprite):
         self.y = y
         self.width = width
         self.height = height
-        self.image = pygame.Surface(self.width,self.height)
+        self.image = pygame.Surface((self.width,self.height))
         self.image.fill(RED)
         self.rect = self.image.get_rect()
         if healthbar != False:

@@ -28,7 +28,7 @@ class BattleSystem:
         self.Battling = True
         while self.Battling:
             self.game.events()
-            self.playerHealthBar = Bar(self.game.player.rect.x, self.game.player.rect.y, TILESIZE * self.game.player.health * 2, TILESIZE, self.game.battles)
+            self.playerHealthBar = Bar(self.game.player.rect.x, self.game.player.rect.y, 16 * self.game.player.health * 2, 16, self.game.battles)
             self.mobHealthBar = Bar(mob.rect.x, mob.rect.y, TILESIZE * mob.health * 2, TILESIZE, self.game.battles)
             self.game.update()
             for sprite in self.game.battles:

@@ -123,8 +123,11 @@ class Game:
                 self.screen.fill(BACKGROUND_COLOR)
                 self.screen.blit(self.battle.playerimg, (0, HEIGHT-self.battle.height))
                 self.screen.blit(self.battle.mobimg, (WIDTH-self.battle.width, 0))
-                self.screen.blit(self.battle.playerHealthBar, (WIDTH - self.battle.width * 3.1, 0))
-                self.screen.blit(self.battle.mobHealthBar, (WIDTH - TILESIZE * 37, 0 + self.battle.height/2))
+                for gui in self.gui:
+                    gui.update()
+                    gui.blit(gui.image, gui.rect)
+                #self.screen.blit(self.battle.playerHealthBar, (WIDTH - self.battle.width * 3.1, 0))
+                #self.screen.blit(self.battle.mobHealthBar, (WIDTH - TILESIZE * 37, 0 + self.battle.height/2))
                 self.screen.blit(self.mouse.image, self.mouse.rect)
                 pygame.display.flip()
         else:
