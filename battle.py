@@ -11,32 +11,25 @@ class BattleSystem:
         #self.playerimg = self.game.player.walkUp[0]
         #for x in range(4): 
         #    self.playerimg = pygame.transform.scale2x(self.playerimg)
-        self.playerimg = pygame.Surface((TILESIZE * 20, TILESIZE * 20))
+        self.playerimg = pygame.Surface((300, 300))
         self.playerimg.fill(YELLOW)
         
-        self.mobimg = pygame.Surface((TILESIZE * 20, TILESIZE * 20))
+        self.mobimg = pygame.Surface((300, 300))
         self.mobimg.fill(RED)
         #self.mobimg = pygame.image.load('assets/GhostLeft1.png')
         #for x in range(4): 
         #    self.mobimg = pygame.transform.scale2x(self.mobimg)
-        
-        self.playerHealthBar = pygame.Surface((TILESIZE * PLAYER_HEALTH, TILESIZE))
-        self.playerHealthBar.fill(RED)
-        self.mobHealthBar = pygame.Surface((TILESIZE, TILESIZE * 2))
-        self.mobHealthBar.fill(RED)
 
         self.Battling = False
-        self.width = 64
-        self.height = 64
+        self.width = 300
+        self.height = 300
 
     def battle(self, mob):
         self.Battling = True
         while self.Battling:
             self.game.events()
-            self.playerHealthBar = pygame.Surface((TILESIZE * self.game.player.health * 2, TILESIZE))
-            self.playerHealthBar.fill(RED)
-            self.mobHealthBar = pygame.Surface((TILESIZE * mob.health * 2, TILESIZE))
-            self.mobHealthBar.fill(RED)
+            self.playerHealthBar = Bar(self.game.player.rect.x, self.game.player.rect.y, TILESIZE * self.game.player.health * 2, TILESIZE, self.game.battles)
+            self.mobHealthBar = Bar(mob.rect.x, mob.rect.y, TILESIZE * mob.health * 2, TILESIZE, self.game.battles)
             self.game.update()
             for sprite in self.game.battles:
                 sprite.update()

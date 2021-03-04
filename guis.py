@@ -1,6 +1,28 @@
 from settings import *
 import pygame
 
+class Bar(pygame.sprite.Sprite):
+
+    def __init__(self, x, y, width, height, groups, healthbar = False):
+        self.groups = groups
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.image = pygame.Surface(self.width,self.height)
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
+        if healthbar != False:
+            self.healthbar = True
+    
+    def update(self):
+        self.rect.center = self.x, self.y
+    
+    def healthbar(self, object):
+        self.image = pygame.Surface(self.width * object.healthpts, self.height)
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
 
 class Button(pygame.sprite.Sprite):
 

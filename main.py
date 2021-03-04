@@ -111,15 +111,19 @@ class Game:
                 for sprite in self.all_sprites:
                     if sprite.rect.colliderect(self.camera.rect):
                         self.screen.blit(sprite.image, self.camera.apply(sprite))
+                for sprite in self.mobs:
+                    if sprite.rect.colliderect(self.camera.rect):
+                        self.screen.blit(sprite.healthbar, sprite.healthbarrect)
+
                 self.screen.blit(self.mouse.image, self.mouse.rect)
                 #for mob in self.mobs:
                 #    self.screen.blit(mob.healthbar, mob.healthbarrect)
                 pygame.display.flip()
             else:
                 self.screen.fill(BACKGROUND_COLOR)
-                self.screen.blit(self.battle.playerimg, (0, HEIGHT -TILESIZE * 20))
-                self.screen.blit(self.battle.mobimg, (WIDTH -TILESIZE * 20, 0))
-                self.screen.blit(self.battle.playerHealthBar, (0 + self.battle.width/2, HEIGHT -TILESIZE * 24))
+                self.screen.blit(self.battle.playerimg, (0, HEIGHT-self.battle.height))
+                self.screen.blit(self.battle.mobimg, (WIDTH-self.battle.width, 0))
+                self.screen.blit(self.battle.playerHealthBar, (WIDTH - self.battle.width * 3.1, 0))
                 self.screen.blit(self.battle.mobHealthBar, (WIDTH - TILESIZE * 37, 0 + self.battle.height/2))
                 self.screen.blit(self.mouse.image, self.mouse.rect)
                 pygame.display.flip()
