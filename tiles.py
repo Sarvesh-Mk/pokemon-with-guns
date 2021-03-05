@@ -1,5 +1,6 @@
 import pygame
 from settings import *
+import random
 
 class Wall(pygame.sprite.Sprite):
 
@@ -43,6 +44,7 @@ class Chest(pygame.sprite.Sprite):
             if self.rect.colliderect(self.game.player.rect):
                 self.opened = True
                 self.game.player.weapon = "bullet"
+                self.game.player.weaponCoolDown = WEAPONTYPES[random.randint(0, len(WEAPONTYPES)-1)]
                 print(self.game.player.weapon)
                 self.kill()
 
