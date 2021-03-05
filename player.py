@@ -2,6 +2,7 @@ from os import walk
 import random
 
 from pygame import sprite
+from pygame.constants import JOYBUTTONDOWN
 from tiles import Wall
 import pygame
 from settings import *
@@ -36,6 +37,7 @@ class Player(pygame.sprite.Sprite):
 
         self.standing = True
         self.weapon = weapon
+        self.weaponCoolDown = 5
         self.moveDelay = 0
         self.Battling = False
         self.walkCount = 0
@@ -89,6 +91,7 @@ class Player(pygame.sprite.Sprite):
                 Particle(self.game, self.rect.centerx + random.randint(PARTICLEOFFSET * -1 * 2,PARTICLEOFFSET * 2), self.rect.centery + random.randint(PARTICLEOFFSET * -1 * 2,PARTICLEOFFSET * 2), [WHITE, LIGHTGREY], None, False, PARTICLETIME)
 
     def get_keys(self):
+
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
             if self.standleft == False and self.standright == False and self.standdown == False:
@@ -138,6 +141,19 @@ class Player(pygame.sprite.Sprite):
                 self.standright = True
                 self.standdown = False
                 self.standup = False
+        
+        if keys[pygame.K_SPACE]:
+            if len(self.game.Bullets) < self.weaponCoolDown:
+                if self.weapon == "bullet":
+                    self.game.bulletsound.play()      
+                    if self.up is True:
+                        Bullet(self.game,self.rect.centerx,self.rect.centery,0,-10,)
+                    if self.down is True:
+                        Bullet(self.game,self.rect.centerx,self.rect.centery,0,10,)
+                    if self.right is True:
+                        Bullet(self.game,self.rect.centerx,self.rect.centery,10,0,)
+                    if self.left is True:
+                        Bullet(self.game,self.rect.centerx,self.rect.centery,-10,0,)
         else:
             self.standing = True
             self.standleft = False

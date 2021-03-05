@@ -1,6 +1,7 @@
 import pygame
 import sys, random
 from pygame import mouse
+from pygame import joystick
 
 from settings import *
 from player import *
@@ -31,7 +32,7 @@ class Game:
         self.saveMenu.load_save()
         self.levelNumber = int(self.saveMenu.levelNumber)
         self.load_data(self.maps[self.levelNumber-1])
-        
+
         self.bulletsound = pygame.mixer.Sound("assets/bullet.wav")
         self.MobHitsound = pygame.mixer.Sound("assets/mob-hit.wav")
         self.mainthemestart = pygame.mixer.Sound("assets/soundtrack(start).wav")
@@ -152,21 +153,20 @@ class Game:
                     if self.playing:
                         self.saveMenu.show_save_screen()
                     self.quit()
-            
-                if event.key == pygame.K_SPACE and self.player.weapon != "none":
-                    self.bulletsound.play()
-                    if self.player.weapon == "bullet":      
-                        if self.player.up is True:
-                            Bullet(self,self.player.rect.centerx,self.player.rect.centery,0,-10,)
-
-                        if self.player.down is True:
-                            Bullet(self,self.player.rect.centerx,self.player.rect.centery,0,10,)
-
-                        if self.player.right is True:
-                            Bullet(self,self.player.rect.centerx,self.player.rect.centery,10,0,)
-
-                        if self.player.left is True:
-                            Bullet(self,self.player.rect.centerx,self.player.rect.centery,-10,0,)
+                #if event.key == pygame.K_SPACE and self.player.weapon != "none":
+                    #self.bulletsound.play()
+                    #if self.player.weapon == "bullet":      
+                    #    if self.player.up is True:
+                    #        Bullet(self,self.player.rect.centerx,self.player.rect.centery,0,-10,)
+#
+                    #    if self.player.down is True:
+                    #        Bullet(self,self.player.rect.centerx,self.player.rect.centery,0,10,)
+#
+                    #    if self.player.right is True:
+                    #        Bullet(self,self.player.rect.centerx,self.player.rect.centery,10,0,)
+#
+                    #    if self.player.left is True:
+                    #        Bullet(self,self.player.rect.centerx,self.player.rect.centery,-10,0,)
         
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
