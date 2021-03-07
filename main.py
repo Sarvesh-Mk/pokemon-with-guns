@@ -72,7 +72,9 @@ class Game:
                 if tile == "C":
                     self.chest = Chest(self, col, row, pygame.image.load('assets/Chest.png'))
                 if tile == ".":
-                    pass
+                    x = random.randint(0,50)
+                    if x == random.randint(0,50):
+                        Wall(self,col,row,'assets/WallTile.png')
         self.camera = Camera(self, self.map.width, self.map.height)
         self.battle = BattleSystem(self)
         self.mainthemestart.play()
@@ -124,9 +126,9 @@ class Game:
                 self.screen.fill(BACKGROUND_COLOR)
                 self.screen.blit(self.battle.playerimg, (0, HEIGHT-self.battle.height))
                 self.screen.blit(self.battle.mobimg, (WIDTH-self.battle.width, 0))
-                for gui in self.gui:
-                    gui.update()
-                    gui.blit(gui.image, gui.rect)
+                for sprite in self.battles:
+                    sprite.update()
+                    self.screen.blit(sprite.image, sprite.rect)
                 #self.screen.blit(self.battle.playerHealthBar, (WIDTH - self.battle.width * 3.1, 0))
                 #self.screen.blit(self.battle.mobHealthBar, (WIDTH - TILESIZE * 37, 0 + self.battle.height/2))
                 self.screen.blit(self.mouse.image, self.mouse.rect)

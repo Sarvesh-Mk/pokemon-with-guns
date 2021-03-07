@@ -20,7 +20,7 @@ class mob(pygame.sprite.Sprite):
         self.chance = 1
         self.speed = 40
         self.healthpts = 3
-        self.health = 1
+        self.health = 10
         self.healthbar = pygame.Surface((TILESIZE/8 * self.healthpts, TILESIZE))
         self.healthbarrect = self.healthbar.get_rect()
         #self.walkLeft = [pygame.image.load('assets/GhostLeft1.png').convert_alpha(),pygame.image.load('assets/GhostLeft2.png').convert_alpha(),pygame.image.load('assets/GhostLeft3.png').convert_alpha(),pygame.image.load('assets/GhostLeft4.png').convert_alpha(),pygame.image.load('assets/GhostLeft5.png').convert_alpha()]
@@ -61,9 +61,9 @@ class mob(pygame.sprite.Sprite):
     def plan_move(self, x, y):
         self.kill_radius.center = self.rect.center
         self.follow_radius.center = self.rect.center
-        if self.kill_radius.colliderect(self.game.player.rect):
-            if self.game.battle.Battling != True:
-                self.game.battle.battle(self)
+        #if self.kill_radius.colliderect(self.game.player.rect):
+        #    if self.game.battle.Battling != True:
+        #        self.game.battle.battle(self)
         
         if self.game.battle.Battling != True:
             if self.follow_radius.colliderect(self.game.player.rect):

@@ -3,8 +3,9 @@ import pygame
 
 class Bar(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, width, height, groups, healthbar = False):
+    def __init__(self, x, y, width, height, groups, game, healthbar = False):
         self.groups = groups
+        self.game = game
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.x = x
         self.y = y
@@ -17,10 +18,10 @@ class Bar(pygame.sprite.Sprite):
             self.healthbar = True
     
     def update(self):
-        self.rect.center = self.x, self.y
+        self.rect.x, self.rect.y = self.x, self.y
     
     def healthbar(self, object):
-        self.image = pygame.Surface(self.width * object.healthpts, self.height)
+        self.image = pygame.Surface((16 * object.health, self.height))
         self.image.fill(RED)
         self.rect = self.image.get_rect()
 
