@@ -27,7 +27,7 @@ class Game:
         self.playing = False
         self.maps= ['mapexample.txt','Test','maps/area-1-map.txt', 'maps/area-2-map.txt', 'maps/area-3-map.txt', 'maps/area-4-map.txt', 'maps/area-5-map.txt', 'maps/area-6-map.txt', ]
         self.gui = pygame.sprite.Group()
-        self.mouse = Mouse(pygame.mouse.get_pos(), self, pygame.image.load('assets/cursor.png'))
+        self.mouse = Mouse(pygame.mouse.get_pos(), self, pygame.image.load("assets/cursor.png"))
         self.saveMenu = saveMenu(self)
         self.saveMenu.load_save()
         self.levelNumber = int(self.saveMenu.levelNumber)
