@@ -1,7 +1,5 @@
 import pygame
 import sys, random
-from pygame import mouse
-from pygame import joystick
 
 from settings import *
 from player import *
@@ -35,7 +33,6 @@ class Game:
 
         self.bulletsound = pygame.mixer.Sound("assets/bullet.wav")
         self.MobHitsound = pygame.mixer.Sound("assets/mob-hit.wav")
-        self.mainthemestart = pygame.mixer.Sound("assets/soundtrack(start).wav")
         self.mainTheme = pygame.mixer.Sound("assets/soundtrack-Main.wav")
 
     def load_data(self, filename):
@@ -44,7 +41,6 @@ class Game:
 
     def new(self):
         self.mainTheme.stop()
-        self.mainthemestart.stop()
         self.keyboards = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
         self.battles = pygame.sprite.Group()
@@ -77,7 +73,6 @@ class Game:
                         Wall(self,col,row,'assets/WallTile.png')
         self.camera = Camera(self, self.map.width, self.map.height)
         self.battle = BattleSystem(self)
-        self.mainthemestart.play()
         self.mainTheme.play(-1)
         pygame.mixer.music.set_volume(0.2)
     

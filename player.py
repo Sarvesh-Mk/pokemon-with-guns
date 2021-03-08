@@ -43,6 +43,8 @@ class Player(pygame.sprite.Sprite):
         self.walkCount = 0
         self.spriteChangeDelay = 0
 
+        self.step = 1
+
     def update(self):
         self.collide_etc()
         self.get_keys()
@@ -87,8 +89,14 @@ class Player(pygame.sprite.Sprite):
             self.x += dx
             self.y += dy
             self.moveDelay = 0
-            for x in range(0,2):
-                Particle(self.game, self.rect.centerx + random.randint(PARTICLEOFFSET * -1 * 2,PARTICLEOFFSET * 2), self.rect.centery + random.randint(PARTICLEOFFSET * -1 * 2,PARTICLEOFFSET * 2), [WHITE, LIGHTGREY], None, False, PARTICLETIME)
+            self.footsteps()
+            
+    def footsteps(self):
+        self.step = self.step * -1
+        if self.down or self.up:
+            Particle(self.game, self.rect.centerx + PARTICLEOFFSET * self.step, self.rect.centery, [WHITE, LIGHTGREY], None, False, PARTICLETIME)
+        else:
+            Particle(self.game, self.rect.centerx, self.rect.centery + PARTICLEOFFSET * self.step, [WHITE, LIGHTGREY], None, False, PARTICLETIME)
 
     def get_keys(self):
 
