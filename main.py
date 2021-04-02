@@ -1,3 +1,4 @@
+#!/home/smk/sar/bin/python3
 import pygame
 import sys, random
 
@@ -170,7 +171,6 @@ class Game:
                     self.mouse.mousedown = True
             if event.type == pygame.MOUSEBUTTONUP:
                 self.mouse.mousedown = False
-
 
 g = Game()
 while True:
